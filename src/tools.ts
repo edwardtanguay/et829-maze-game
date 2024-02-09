@@ -21,18 +21,17 @@ export const getRoomRows = (height: number, width: number) => {
 
 export const createMapHtml = (roomRows: any, player: IPlayer) => {
 	let mapHtml = "";
-	let x = 0;
 	let y = 0;
 	for (const roomRow of roomRows) {
 		mapHtml += '<div class="flex gap-2 mb-2">';
-		let y = 0;
+		let x = 0;
 		for (const room of roomRow) {
-			const roomText = player.x === x && player.y === y ? `<span class="player">${player.icon}</span>` : '';
-			mapHtml += `<div class="bg-gray-200 w-[5rem] h-[5rem] flex justify-center items-center"><p>${roomText}</p></div>`;
-			y++;
+			const roomText = player.y === y && player.x === x ? `<span class="player">${player.icon}</span>` : '';
+			mapHtml += `<div class="bg-gray-200 w-[5rem] h-[5rem] flex justify-center items-center"><p>${roomText} x=${x}, y=${y}</p></div>`;
+			x++;
 		}
 		mapHtml += "</div>";
-		x++;
+		y++;
 	}
 	return mapHtml;
 };

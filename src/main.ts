@@ -1,37 +1,47 @@
+import { IPlayer } from "./interfaces";
 import "./style.css";
 import { createMapHtml, createPlayer, getRoomRows } from "./tools";
 
 setTimeout(() => {
-	const bodyElem = document.querySelector<HTMLBodyElement>('body');
+	const bodyElem = document.querySelector<HTMLBodyElement>("body");
 	const playerElem = document.querySelector<HTMLSpanElement>(".player");
+	const gameArea = document.querySelector<HTMLDivElement>(".gameArea");
+
+	const roomRows = getRoomRows(height, width);
+	const player:IPlayer = createPlayer(height, width);
+
+	if (gameArea) {
+		gameArea.innerHTML = createMapHtml(roomRows, player);
+	}
+
+	console.log(player);
 
 	if (bodyElem) {
-		bodyElem.addEventListener('keyup', (event) => {
+		bodyElem.addEventListener("keyup", (event) => {
+			console.log(event.code);
 			switch (event.code) {
-				case 'ArrowUp':
-					console.log('move player up');
+				case "ArrowUp":
+					player.y--;
 					break;
-				case 'ArrowDown':
-					console.log('move player down');
+				case "ArrowDown":
+					player.y++;
 					break;
-				case 'ArrowLeft':
-					console.log('move player left');
+				case "ArrowLeft":
+					player.x--;
 					break;
-				case 'ArrowRight':
-					console.log('move player right');
+				case "ArrowRight":
+					player.x++;
 					break;
 			}
-		})
+			console.log(player);
+		});
 	}
 }, 0);
 
 const height = 5;
 const width = 5;
 
-const roomRows = getRoomRows(height, width);
-const player = createPlayer(height, width);
-
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = /*html*/ `
 	<h1 class="text-2xl mb-4">Maze Game</h1>
-	${createMapHtml(roomRows, player)}
+	<main class="gameArea"></main>
 `;
