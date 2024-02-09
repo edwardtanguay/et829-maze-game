@@ -5,10 +5,10 @@
 	- x left: 5 x 5 maze 
 	- x refactor code into tools
 
-	- .. right: current room
-	- player shows in random room
+	- .. player shows in random room
 	- arrow keys move player
 		- when at edge of maze, player blocked 
+	- right: current room
 	
 	- treasure is placed in random room (not shown)
 	- goal: find the treasure in least number of tries

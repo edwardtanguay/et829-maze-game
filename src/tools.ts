@@ -1,3 +1,6 @@
+import { IPlayer } from "./interfaces";
+import * as tools from "./tools";
+
 export const getRoomRows = (height: number, width: number) => {
 	const roomRows = [];
 	let roomNumber = 1;
@@ -16,14 +19,34 @@ export const getRoomRows = (height: number, width: number) => {
 	return roomRows;
 };
 
-export const createMapHtml = (roomRows: any) => {
+export const createMapHtml = (roomRows: any, player: IPlayer) => {
 	let mapHtml = "";
+	let x = 0;
+	let y = 0;
 	for (const roomRow of roomRows) {
 		mapHtml += '<div class="flex gap-2 mb-2">';
+		let y = 0;
 		for (const room of roomRow) {
-			mapHtml += `<div class="bg-gray-200 w-[5rem] h-[5rem] flex justify-center items-center"><p>${room.name}</p></div>`;
+			const roomText = player.x === x && player.y === y ? player.icon : '';
+			mapHtml += `<div class="bg-gray-200 w-[5rem] h-[5rem] flex justify-center items-center"><p>${roomText}</p></div>`;
+			y++;
 		}
 		mapHtml += "</div>";
+		x++;
 	}
 	return mapHtml;
+};
+
+export const getRandomNumber = (start: number, end: number) => {
+	const range = end - start;
+	return Math.floor(Math.random() * (range + 1)) + start;
+};
+
+export const createPlayer = (height: number, width: number) => {
+	return {
+		name: "Moving Man",
+		x: tools.getRandomNumber(0, height - 1),
+		y: tools.getRandomNumber(0, width - 1),
+		icon: "P",
+	};
 };
