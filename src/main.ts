@@ -2,17 +2,22 @@ import { IPlayer } from "./interfaces";
 import "./style.css";
 import { createMapHtml, createPlayer, getRoomRows } from "./tools";
 
+const redraw = (roomRows: any, player: IPlayer) => {
+	const gameArea = document.querySelector<HTMLDivElement>(".gameArea");
+	if (gameArea) {
+		gameArea.innerHTML = createMapHtml(roomRows, player);
+	}
+
+}
+
 setTimeout(() => {
 	const bodyElem = document.querySelector<HTMLBodyElement>("body");
-	const playerElem = document.querySelector<HTMLSpanElement>(".player");
-	const gameArea = document.querySelector<HTMLDivElement>(".gameArea");
+	// const playerElem = document.querySelector<HTMLSpanElement>(".player");
 
 	// redraw
 	const roomRows = getRoomRows(height, width);
 	const player:IPlayer = createPlayer(height, width);
-	if (gameArea) {
-		gameArea.innerHTML = createMapHtml(roomRows, player);
-	}
+	redraw(roomRows, player);
 
 	if (bodyElem) {
 		bodyElem.addEventListener("keyup", (event) => {
@@ -31,7 +36,7 @@ setTimeout(() => {
 					player.x++;
 					break;
 			}
-			console.log(player);
+			redraw(roomRows, player);
 		});
 	}
 }, 0);
