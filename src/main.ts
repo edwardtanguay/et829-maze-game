@@ -7,14 +7,12 @@ setTimeout(() => {
 	const playerElem = document.querySelector<HTMLSpanElement>(".player");
 	const gameArea = document.querySelector<HTMLDivElement>(".gameArea");
 
+	// redraw
 	const roomRows = getRoomRows(height, width);
 	const player:IPlayer = createPlayer(height, width);
-
 	if (gameArea) {
 		gameArea.innerHTML = createMapHtml(roomRows, player);
 	}
-
-	console.log(player);
 
 	if (bodyElem) {
 		bodyElem.addEventListener("keyup", (event) => {
