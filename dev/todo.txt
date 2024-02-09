@@ -2,15 +2,20 @@
 	- x install js-dom site
 	- x minimize a JS-DOM site
 	- x tailwind
-	- .. left: 5 x 5 maze 
-	- right: current room
+	- x left: 5 x 5 maze 
+	- x refactor code into tools
+
+	- .. right: current room
 	- player shows in random room
-	- treasure is placed in random room (not shown)
 	- arrow keys move player
 		- when at edge of maze, player blocked 
+	
+	- treasure is placed in random room (not shown)
 	- goal: find the treasure in least number of tries
 	- as you move, show number of tries
 
+
+- add typeScript interfaces
 
 	player = {
 		x: 0,
