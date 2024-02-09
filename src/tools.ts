@@ -19,14 +19,24 @@ export const getRoomRows = (height: number, width: number) => {
 	return roomRows;
 };
 
-export const createMapHtml = (roomRows: any, player: IPlayer) => {
+export const createMapHtml = (
+	roomRows: any,
+	player: IPlayer,
+	treasure: IPlayer
+) => {
 	let mapHtml = "";
 	let y = 0;
 	for (const roomRow of roomRows) {
 		mapHtml += '<div class="flex gap-2 mb-2">';
 		let x = 0;
 		for (const _room of roomRow) {
-			const roomText = player.y === y && player.x === x ? `<span class="player">${player.icon}</span>` : '';
+			let roomText = "";
+			if (treasure.y === y && treasure.x === x) {
+				roomText = `<span class="treasure">${treasure.icon}</span>`;
+			}
+			if (player.y === y && player.x === x) {
+				roomText = `<span class="player">${player.icon}</span>`;
+			}
 			mapHtml += `<div class="bg-gray-200 w-[5rem] h-[5rem] flex justify-center items-center"><p>${roomText}</p></div>`;
 			x++;
 		}
@@ -47,5 +57,14 @@ export const createPlayer = (height: number, width: number) => {
 		x: tools.getRandomNumber(0, height - 1),
 		y: tools.getRandomNumber(0, width - 1),
 		icon: "P",
+	};
+};
+
+export const createTreasure = (height: number, width: number) => {
+	return {
+		name: "Treasure",
+		x: tools.getRandomNumber(0, height - 1),
+		y: tools.getRandomNumber(0, width - 1),
+		icon: "T",
 	};
 };

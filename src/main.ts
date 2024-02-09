@@ -1,11 +1,11 @@
 import { IPlayer } from "./interfaces";
 import "./style.css";
-import { createMapHtml, createPlayer, getRoomRows } from "./tools";
+import { createMapHtml, createPlayer, createTreasure, getRoomRows } from "./tools";
 
-const redraw = (roomRows: any, player: IPlayer) => {
+const redraw = (roomRows: any, player: IPlayer, treasure: IPlayer) => {
 	const gameArea = document.querySelector<HTMLDivElement>(".gameArea");
 	if (gameArea) {
-		gameArea.innerHTML = createMapHtml(roomRows, player);
+		gameArea.innerHTML = createMapHtml(roomRows, player, treasure);
 	}
 
 }
@@ -17,7 +17,9 @@ setTimeout(() => {
 	// redraw
 	const roomRows = getRoomRows(height, width);
 	const player:IPlayer = createPlayer(height, width);
-	redraw(roomRows, player);
+	const treasure:IPlayer = createTreasure(height, width);
+
+	redraw(roomRows, player, treasure);
 
 	if (bodyElem) {
 		bodyElem.addEventListener("keyup", (event) => {
@@ -36,7 +38,7 @@ setTimeout(() => {
 					player.x++;
 					break;
 			}
-			redraw(roomRows, player);
+			redraw(roomRows, player, treasure);
 		});
 	}
 }, 0);
