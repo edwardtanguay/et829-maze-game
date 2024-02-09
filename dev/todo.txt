@@ -1,0 +1,10 @@
+- .. maze game
+	- minimize a JS-DOM site
+	- left: 5 x 5 maze 
+	- right: current room
+	- player shows in random room
+	- treasure is placed in random room (not shown)
+	- arrow keys move player
+		- when at edge of maze, player blocked 
+	- goal: find the treasure in least number of tries
+	- as you move, show number of tries
