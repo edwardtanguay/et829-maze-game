@@ -7,7 +7,20 @@ setTimeout(() => {
 
 	if (bodyElem) {
 		bodyElem.addEventListener('keyup', (event) => {
-			console.log(event.code);
+			switch (event.code) {
+				case 'ArrowUp':
+					console.log('move player up');
+					break;
+				case 'ArrowDown':
+					console.log('move player down');
+					break;
+				case 'ArrowLeft':
+					console.log('move player left');
+					break;
+				case 'ArrowRight':
+					console.log('move player right');
+					break;
+			}
 		})
 	}
 }, 0);
