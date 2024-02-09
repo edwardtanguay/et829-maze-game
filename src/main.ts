@@ -10,17 +10,17 @@ const width = 5;
 // }
 const roomRows = [
 	[
-		{ name: "room1" },
+		{ name: "room1", x:0, y: 0 },
 		{ name: "room2" },
 		{ name: "room3" },
 		{ name: "room4" },
 		{ name: "room5" },
 	],
 	[
-		{ name: "room6" },
+		{ name: "room6", x: 0, y: 1 },
 		{ name: "room7" },
-		{ name: "room8" },
-		{ name: "room9" },
+		{ name: "room8", x: 2, y: 1 },
+		{ name: "room9", x: 3, y: 1 },
 		{ name: "room10" },
 	],
 	[
@@ -35,9 +35,9 @@ const roomRows = [
 // create room HTML 
 let mapHtml = '';
 for (const roomRow of roomRows) {
-	mapHtml += '<div class="flex gap-2 flex-wrap">';
+	mapHtml += '<div class="flex gap-2 mb-2">';
 	for (const room of roomRow) {
-		mapHtml += `<div class="bg-gray-200 w-[5rem] h-[5rem]">${room.name}</div>`
+		mapHtml += `<div class="bg-gray-200 w-[5rem] h-[5rem] flex justify-center items-center"><p>${room.name}</p></div>`
 	}
 	mapHtml += '</div>';
 }
