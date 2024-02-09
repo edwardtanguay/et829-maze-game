@@ -1,5 +1,7 @@
 - .. maze game
-	- minimize a JS-DOM site
+	- x install js-dom site
+	- .. minimize a JS-DOM site
+	- tailwind
 	- left: 5 x 5 maze 
 	- right: current room
 	- player shows in random room
