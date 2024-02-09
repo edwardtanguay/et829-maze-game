@@ -1,8 +1,8 @@
 - .. maze game
 	- x install js-dom site
-	- .. minimize a JS-DOM site
-	- tailwind
-	- left: 5 x 5 maze 
+	- x minimize a JS-DOM site
+	- x tailwind
+	- .. left: 5 x 5 maze 
 	- right: current room
 	- player shows in random room
 	- treasure is placed in random room (not shown)
@@ -10,3 +10,19 @@
 		- when at edge of maze, player blocked 
 	- goal: find the treasure in least number of tries
 	- as you move, show number of tries
+
+
+	player = {
+		x: 0,
+		y: 3
+	}
+
+	room[0,3] = {
+		playerExists : false,
+		treasureExists : true,
+		monsters: 3,
+		exits: ['north', 'east'],
+		object: [{ type: 'orange', size: 'large'}]
+	}
+
+	

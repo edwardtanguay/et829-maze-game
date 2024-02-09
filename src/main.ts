@@ -1,6 +1,51 @@
-import './style.css'
+import "./style.css";
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = /*html*/ `
-<h1 class="text-2xl">Maze Game</h1>
-<p>welcome</p>
+const height = 5;
+const width = 5;
+
+
+// create room data
+// for (let x = 0; x < height; x++) {
+// 	for (let y = 0; y < width; y++) {}
+// }
+const roomRows = [
+	[
+		{ name: "room1" },
+		{ name: "room2" },
+		{ name: "room3" },
+		{ name: "room4" },
+		{ name: "room5" },
+	],
+	[
+		{ name: "room6" },
+		{ name: "room7" },
+		{ name: "room8" },
+		{ name: "room9" },
+		{ name: "room10" },
+	],
+	[
+		{ name: "room11" },
+		{ name: "room12" },
+		{ name: "room13" },
+		{ name: "room14" },
+		{ name: "room15" },
+	],
+];
+
+// create room HTML 
+let mapHtml = '';
+for (const roomRow of roomRows) {
+	mapHtml += '<div class="flex gap-2 flex-wrap">';
+	for (const room of roomRow) {
+		mapHtml += `<div class="bg-gray-200 w-[5rem] h-[5rem]">${room.name}</div>`
+	}
+	mapHtml += '</div>';
+}
+
+
+
+
+document.querySelector<HTMLDivElement>("#app")!.innerHTML = /*html*/ `
+<h1 class="text-2xl mb-4">Maze Game</h1>
+${mapHtml}
 `;
