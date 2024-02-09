@@ -1,6 +1,17 @@
 import "./style.css";
 import { createMapHtml, createPlayer, getRoomRows } from "./tools";
 
+setTimeout(() => {
+	const bodyElem = document.querySelector<HTMLBodyElement>('body');
+	const playerElem = document.querySelector<HTMLSpanElement>(".player");
+
+	if (bodyElem) {
+		bodyElem.addEventListener('keyup', (event) => {
+			console.log(event.code);
+		})
+	}
+}, 0);
+
 const height = 5;
 const width = 5;
 

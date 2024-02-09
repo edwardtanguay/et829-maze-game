@@ -27,7 +27,7 @@ export const createMapHtml = (roomRows: any, player: IPlayer) => {
 		mapHtml += '<div class="flex gap-2 mb-2">';
 		let y = 0;
 		for (const room of roomRow) {
-			const roomText = player.x === x && player.y === y ? player.icon : '';
+			const roomText = player.x === x && player.y === y ? `<span class="player">${player.icon}</span>` : '';
 			mapHtml += `<div class="bg-gray-200 w-[5rem] h-[5rem] flex justify-center items-center"><p>${roomText}</p></div>`;
 			y++;
 		}
